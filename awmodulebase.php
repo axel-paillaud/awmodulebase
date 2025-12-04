@@ -67,6 +67,7 @@ class AwModuleBase extends Module
 
         $installed = parent::install()
             && $this->installDb()
+            && $this->registerHook('actionFrontControllerSetMedia')
             && Configuration::updateValue('AWMODULEBASE_SAMPLE_CONFIG', '');
 
         // Prevent 'Unable to generate a URL for the named route [...]' error,
@@ -108,5 +109,29 @@ class AwModuleBase extends Module
     {
         $route = $this->get('router')->generate('awmodulebase_form_configuration');
         Tools::redirectAdmin($route);
+    }
+
+    /**
+     * Hook to register CSS and JS on front-office pages
+     */
+    public function hookActionFrontControllerSetMedia()
+    {
+        $this->context->controller->registerStylesheet(
+            'module-awmodulebase-style',
+            'modules/' . $this->name . '/views/css/awmodulebase.css',
+            [
+                'media' => 'all',
+                'priority' => 200,
+            ]
+        );
+
+        $this->context->controller->registerJavascript(
+            'module-awmodulebase-script',
+            'modules/' . $this->name . '/views/js/awmodulebase.js',
+            [
+                'position' => 'bottom',
+                'priority' => 200,
+            ]
+        );
     }
 }
