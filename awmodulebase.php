@@ -66,6 +66,7 @@ class AwModuleBase extends Module
         }
 
         $installed = parent::install()
+            && $this->installDb()
             && Configuration::updateValue('AWMODULEBASE_SAMPLE_CONFIG', '');
 
         // Prevent 'Unable to generate a URL for the named route [...]' error,
@@ -80,7 +81,22 @@ class AwModuleBase extends Module
     public function uninstall(): bool
     {
         return parent::uninstall()
-            && Configuration::deleteByName('AWMODULEBASE_SAMPLE_CONFIG');
+            && Configuration::deleteByName('AWMODULEBASE_SAMPLE_CONFIG')
+            && $this->uninstallDb();
+    }
+
+    protected function installDb(): bool
+    {
+        $file = __DIR__ . '/sql/install.php';
+
+        return is_file($file) ? (bool) require $file : false;
+    }
+
+    protected function uninstallDb(): bool
+    {
+        $file = __DIR__ . '/sql/uninstall.php';
+
+        return is_file($file) ? (bool) require $file : false;
     }
 
     /**
