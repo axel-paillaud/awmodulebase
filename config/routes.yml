@@ -1,3 +1,12 @@
+awmodulebase_index:
+  path: /awmodulebase/index
+  methods: [GET]
+  defaults:
+    _controller: 'Axelweb\AwModuleBase\Controller\AwModuleBaseController::index'
+    # Needed to work with tab system
+    _legacy_controller: AwModuleBase
+    _legacy_link: AwModuleBase
+
 awmodulebase_form_configuration:
   path: /awmodulebase/configuration
   methods: [GET, POST]

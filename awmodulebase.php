@@ -31,6 +31,19 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 class AwModuleBase extends Module
 {
+    public $tabs = [
+        [
+            'name' => [
+                'en' => 'Module Base',
+                'fr' => 'Module Base',
+            ],
+            'class_name' => 'AwModuleBase',
+            'parent_class_name' => 'AdminParentModulesSf',
+            'wording' => 'Module Base',
+            'wording_domain' => 'Modules.Awmodulebase.Admin',
+        ],
+    ];
+
     public function __construct()
     {
         $this->name = 'awmodulebase';
