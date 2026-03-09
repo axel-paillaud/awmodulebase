@@ -56,7 +56,7 @@ class AwModuleBase extends Module
 
         parent::__construct();
 
-        $this->displayName = $this->trans('Axelweb - Module Base', [], 'Modules.Awmodulebase.Admin');
+        $this->displayName = $this->trans('Module Base', [], 'Modules.Awmodulebase.Admin');
         $this->description = $this->trans('Base template module for PrestaShop development', [], 'Modules.Awmodulebase.Admin');
 
         $this->confirmUninstall = $this->trans('Are you sure you want to uninstall this module?', [], 'Modules.Awmodulebase.Admin');
