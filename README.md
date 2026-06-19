@@ -175,7 +175,7 @@ awmodulebase/
 
 ## TODO
 
-- [ ] Replace all header stamp
+- [X] Replace all header stamp
 - [ ] Remove smartpack reference
 
 ---
